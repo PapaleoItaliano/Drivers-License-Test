@@ -15,8 +15,15 @@ import javax.swing.JTextField;
 
 public class Driver_Test extends JFrame {
 	private DetailsStuff details;
-	public Driver_Test(String Title) {
+	public Driver_Test(String Title) {		
 		super(Title);
+		char[] arr1 = {'B','D','A','A','C','A','B','A','C','D','B','C','D','A','D','C','C','B','D','A'};
+		DriversTest test1 = new DriversTest(arr1);
+		char[] arr2 = {'A','B','C','D','E','B','B','A','C','D','B','C','D','A','D','C','C','B','D','A'};
+		DriversTest test2 = new DriversTest(arr2);
+		
+		DriversTest.setKey("BDAACABACDBCDADCCBDA");
+		
 		setLayout(new BorderLayout());
 		JTextArea textArea = new JTextArea();
 		JButton button = new JButton("FHRITP");
@@ -29,7 +36,13 @@ public class Driver_Test extends JFrame {
 			{
 				String text = event.getText();
 				textArea.append(text);
-				JOptionPane.showMessageDialog(c, "You have Passed!");
+				if(test2.passed())
+				JOptionPane.showMessageDialog(c, "You have Passed!", 
+						"Results of DriverTest", JOptionPane.INFORMATION_MESSAGE);
+				else {
+					JOptionPane.showMessageDialog(c,  "Sorry, Better Luck Next Time",
+							"Results of the DriverTest",JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
 		c.add(textArea, BorderLayout.CENTER);
