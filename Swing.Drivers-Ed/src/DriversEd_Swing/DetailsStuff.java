@@ -19,7 +19,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SpringLayout.Constraints;
+import javax.swing.event.EventListenerList;
 public class DetailsStuff extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3252811051456351743L;
+	private EventListenerList listenerList = new EventListenerList();
 	public DetailsStuff ()
 	{
 		Dimension size = getPreferredSize();
@@ -33,6 +39,16 @@ public class DetailsStuff extends JPanel{
 		
 		JButton addBtn = new JButton("Submit");
 		
+		addBtn.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				String name = nameField.getText();
+				String lastNameo = lastNameField.getText();
+				
+				
+				String text = name + " " + lastNameo + "\n";
+				fireDetailEvent(new DetailEvent(this, text));
+			}
+		});
 		setLayout(new GridBagLayout());
 		
 		GridBagConstraints gc = new GridBagConstraints();
@@ -67,4 +83,17 @@ public class DetailsStuff extends JPanel{
 		gc.gridy = 2;
 		add(addBtn,gc);
 }
+	public void fireDetailEvent(DetailEvent event){
+		Object[] listeners = listenerList.getListenerList();
+		for(int i = 0; i<listeners.length;i+=2)
+		{
+			if(listeners[i] == DetailListener.class)
+			{
+				((DetailListener)listeners[i+1]).detailEventOccurred(event);
+			}
+		}
+	}
+	public void addDetailListener(DetailListener listener){
+		listenerList.add(DetailListener.class, listener);
+	}
 }
