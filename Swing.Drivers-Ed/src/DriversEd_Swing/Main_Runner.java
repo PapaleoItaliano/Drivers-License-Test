@@ -16,7 +16,7 @@ public class Main_Runner {
 				run.setLocationRelativeTo(null);
 				run.setVisible(true);
 				run.setResizable(true);
-
+				// herro
 			}
 
 		});
