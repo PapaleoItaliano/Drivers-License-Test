@@ -9,7 +9,7 @@ public class Main_Runner {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				JFrame run = new Driver_Test("Driver_Test");
-				run.setSize(600, 400);
+				run.setSize(800, 400);
 				run.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				run.setLocationRelativeTo(null);
 				run.setVisible(true);
