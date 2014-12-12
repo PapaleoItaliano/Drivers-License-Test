@@ -2,10 +2,18 @@ package DriversEd_Swing;
 
 import java.util.Scanner;
 
+
 public class DriversTest 
 {
 	static char[] answers = new char[20];
-	char[] test = new char[20];
+	static char[] test = new char[20];
+	public DriversTest(String temp)
+	{
+		for (int i = 0; i<20;i++)
+			test[i] = temp.charAt(i);
+			
+	}
+	
 	public DriversTest(char[] temp)
 	{
 		 test = temp;
@@ -84,6 +92,10 @@ public class DriversTest
 	{
 		return answers;
 	}
+	public static char[] getAnswers()
+	{
+		return test;
+	}
 	
 	public static void setKey(String key)
 	{
@@ -92,5 +104,4 @@ public class DriversTest
 			answers[i] = key.charAt(i);
 		}
 	}
-	
-}
+	}
